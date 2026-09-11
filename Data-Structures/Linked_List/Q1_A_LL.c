@@ -72,7 +72,7 @@ int main()
 			printf("The resulting sorted linked list is: ");
 			printList(&ll);
 			removeAllItems(&ll);
-			break;
+			break; 
 		case 0:
 			removeAllItems(&ll);
 			break;
@@ -91,6 +91,39 @@ int main()
 int insertSortedLL(LinkedList *ll, int item)
 {
 	/* add your code here */
+	ListNode  *temp;
+	int idx = 0;
+	int success = -1;
+
+	while(1){
+		temp = findNode(ll, idx);
+		if (temp == NULL){
+			success = insertNode(ll, idx, item);
+			if (success == 0){
+				return idx;
+			}
+			else{
+				return -1;
+			}
+		}
+		if(temp->item < item){
+			idx++;
+		}
+		else if(temp->item == item){
+			return -1;
+		}
+		else{
+			success = insertNode(ll, idx, item);
+			if (success == 0){
+				return idx;
+			}
+			else{
+				return -1;
+			}
+		}
+	}
+	return -1;
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
