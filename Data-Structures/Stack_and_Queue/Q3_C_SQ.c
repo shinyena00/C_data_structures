@@ -104,6 +104,36 @@ int main()
 int isStackPairwiseConsecutive(Stack *s)
 {
   /* add your code here */
+  if ((s->ll).size % 2 == 1){
+	return 0;
+  }
+  Stack new;
+  new.ll.size = 0;
+  new.ll.head = NULL;
+
+  ListNode *current;
+  int node1, node2;
+  while(!isEmptyStack(s)){
+	node1 = pop(s);
+	node2 = pop(s);
+	if((node1-node2) == 1 || (node1-node2) == -1){
+		push(&new, node1);
+		push(&new, node2);
+	}
+	else{
+		return 0;
+	}
+  }
+
+  while(!isEmptyStack(&new)){
+	push(s, pop(&new));
+  }
+
+  return 1;
+
+
+
+
 }
 
 //////////////////////////////////////////////////////////////////////////////////

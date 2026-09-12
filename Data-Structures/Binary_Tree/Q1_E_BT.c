@@ -117,6 +117,30 @@ int identical(BTNode *tree1, BTNode *tree2)
 
 {
    /* add your code here */
+   BTNode *temp1 = tree1;
+   BTNode *temp2 = tree2;
+
+    if(temp1 == NULL && temp2 == NULL){
+
+        return 1;
+    }
+    
+    else if (temp1 == NULL || temp2 == NULL){
+        return 0;
+    }
+    if(temp1->item != temp2->item){
+        return 0;
+    }
+    if (identical(temp1->left, temp2->left) == 0){
+        return 0;
+
+    }
+    if (identical(temp1->right, temp2->right) == 0){
+        return 0;
+    }
+
+    return 1;
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////

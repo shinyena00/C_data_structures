@@ -15,7 +15,7 @@ typedef struct _btnode{
 	struct _btnode *left;
 	struct _btnode *right;
 } BTNode;   // You should not change the definition of BTNode
-
+ 
 /////////////////////////////////////////////////////////////////////////////////
 
 typedef struct _stackNode{
@@ -98,6 +98,25 @@ int maxHeight(BTNode *node)
 
 {
     /* add your code here */
+    BTNode *current = node;
+    int left = 0, right = 0;
+
+    if(node == NULL){
+        return -1;
+    }
+
+    if(current-> left != NULL){
+        left++;
+        left += maxHeight(current->left);
+    }
+    if(current->right!=NULL){
+        right++;
+        right  += maxHeight(current->right);
+    }
+
+    return left > right ? left:right;
+    
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
